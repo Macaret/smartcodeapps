@@ -38,12 +38,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── CENTERING WRAPPER ── */
-.wrap {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 6%;
-}
+.wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 6%; }
 
 /* ── NAV ── */
 nav {
@@ -53,16 +48,14 @@ nav {
   border-bottom: 1px solid var(--border);
 }
 .nav-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
+  max-width: var(--max-w); margin: 0 auto;
   padding: 1.1rem 6%;
   display: flex; align-items: center; justify-content: space-between;
 }
 .nav-logo {
   font-family: 'Fraunces', serif;
   font-size: 1.15rem; font-weight: 400;
-  color: var(--ink); text-decoration: none;
-  letter-spacing: -0.01em;
+  color: var(--ink); text-decoration: none; letter-spacing: -0.01em;
 }
 .nav-logo span { color: var(--accent); }
 .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
@@ -81,11 +74,9 @@ nav {
   min-height: 100vh;
   display: flex; flex-direction: column; justify-content: center;
   padding: 8rem 0 5rem;
-  position: relative; overflow: hidden;
 }
 .hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 420px;
+  display: grid; grid-template-columns: 1fr 420px;
   gap: 4rem; align-items: center;
 }
 .hero-eyebrow {
@@ -99,8 +90,7 @@ nav {
   font-family: 'Fraunces', serif;
   font-size: clamp(2rem, 4vw, 3.2rem);
   font-weight: 300; line-height: 1.08;
-  letter-spacing: -0.03em; color: var(--ink);
-  margin-bottom: 1.75rem;
+  letter-spacing: -0.03em; color: var(--ink); margin-bottom: 1.75rem;
 }
 .hero h1 em { font-style: italic; color: var(--accent); }
 .hero-desc {
@@ -139,10 +129,7 @@ nav {
   color: var(--ink-muted); font-size: 0.8rem;
   padding: 0.3rem 0.85rem; border-radius: 50px; font-weight: 400;
 }
-.pill.active {
-  background: var(--accent-light); border-color: transparent;
-  color: var(--accent); font-weight: 500;
-}
+.pill.active { background: var(--accent-light); border-color: transparent; color: var(--accent); font-weight: 500; }
 .xp-line {
   display: flex; align-items: center; justify-content: space-between;
   padding: 0.75rem 0; border-top: 1px solid var(--border-solid); font-size: 0.88rem;
@@ -171,9 +158,7 @@ nav {
   font-size: 1rem; color: var(--ink-muted);
   font-weight: 300; line-height: 1.8; max-width: 480px;
 }
-.services-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
-}
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 .service-card {
   background: var(--surface); border: 1px solid var(--border-solid);
   border-radius: var(--radius); padding: 2rem;
@@ -202,75 +187,68 @@ nav {
   border-radius: 4px; font-weight: 400;
 }
 
-/* ── APP SPOTLIGHT ── */
-.app-spotlight { padding: 6rem 0; }
-.app-spotlight .section-header { margin-bottom: 2rem; }
-.app-spotlight-inner {
-  display: grid; grid-template-columns: 1fr 340px;
-  gap: 4rem; align-items: center;
+/* ── APP SECTION ── */
+.app-section { padding: 6rem 0; }
+.app-section .section-header { margin-bottom: 2rem; }
+.app-card {
+  display: grid; grid-template-columns: 280px 1fr;
+  gap: 3rem; align-items: start;
   background: var(--surface-alt);
   border: 1px solid var(--border-solid);
-  border-radius: var(--radius); padding: 3rem;
+  border-radius: var(--radius); padding: 2.5rem;
+  transition: border-color 0.2s;
 }
-.app-category {
-  display: inline-block;
-  background: #fef3c7; color: #92400e;
+.app-card:hover { border-color: rgba(91,74,247,0.3); }
+.app-meta { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.badge {
   font-size: 0.72rem; font-weight: 500;
-  padding: 0.3rem 0.8rem; border-radius: 50px;
-  margin-bottom: 1.25rem;
-  text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 0.25rem 0.7rem; border-radius: 50px;
+  text-transform: uppercase; letter-spacing: 0.05em;
 }
-.app-spotlight-inner > div > p {
-  font-size: 0.95rem; color: var(--ink-muted);
-  font-weight: 300; line-height: 1.8; margin-bottom: 1.5rem;
+.badge-edu { background: #fef3c7; color: #92400e; }
+.badge-ios { background: var(--accent-light); color: var(--accent); }
+.badge-neutral { background: var(--surface); color: var(--ink-light); border: 1px solid var(--border-solid); }
+.app-card h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.75rem; font-weight: 300;
+  letter-spacing: -0.02em; color: var(--ink); margin-bottom: 0.6rem;
 }
-.app-features { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.75rem; }
-.app-features li {
-  font-size: 0.88rem; color: var(--ink-muted);
-  display: flex; align-items: center; gap: 0.75rem; font-weight: 300;
+.app-card > div > p {
+  font-size: 0.92rem; color: var(--ink-muted);
+  font-weight: 300; line-height: 1.8; margin-bottom: 1.25rem;
 }
-.app-features li::before {
+.feature-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; }
+.feature-list li {
+  font-size: 0.85rem; color: var(--ink-muted);
+  display: flex; align-items: center; gap: 0.7rem; font-weight: 300;
+}
+.feature-list li::before {
   content: ''; width: 5px; height: 5px;
   background: var(--accent); border-radius: 50%; flex-shrink: 0;
 }
-.app-actions { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
-.coming-soon {
+.app-status {
   display: inline-flex; align-items: center; gap: 0.5rem;
   background: var(--accent-light); color: var(--accent);
-  padding: 0.55rem 1.1rem; border-radius: 50px;
-  font-size: 0.83rem; font-weight: 500;
+  padding: 0.5rem 1rem; border-radius: 50px;
+  font-size: 0.82rem; font-weight: 500;
 }
-.coming-soon::before {
+.app-status::before {
   content: ''; width: 6px; height: 6px;
   background: var(--accent); border-radius: 50%;
   animation: pulse 1.5s infinite;
 }
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.app-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 0.75rem; }
 .app-link {
   font-size: 0.88rem; color: var(--ink-muted);
-  text-decoration: none; font-weight: 400;
-  transition: color 0.2s;
+  text-decoration: none; font-weight: 400; transition: color 0.2s;
 }
 .app-link:hover { color: var(--accent); }
-.app-visual {
-  background: linear-gradient(145deg, #eeebff 0%, #fef3c7 100%);
-  border-radius: 16px; aspect-ratio: 3/4;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  gap: 0.5rem; font-size: 4rem;
-}
-.app-visual-label {
-  font-family: 'Fraunces', serif;
-  font-size: 0.9rem; font-weight: 400; font-style: italic;
-  color: var(--ink-muted);
-}
 
 /* ── CONTACT ── */
 .contact-section { padding: 6rem 0; background: var(--ink); }
 .contact-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 6%;
+  max-width: var(--max-w); margin: 0 auto; padding: 0 6%;
   display: flex; align-items: center; justify-content: space-between;
   gap: 3rem; flex-wrap: wrap;
 }
@@ -293,8 +271,7 @@ nav {
 /* ── FOOTER ── */
 footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.06); }
 .footer-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
+  max-width: var(--max-w); margin: 0 auto;
   padding: 1.75rem 6%;
   display: flex; align-items: center; justify-content: space-between;
   flex-wrap: wrap; gap: 1rem;
@@ -309,8 +286,7 @@ footer p { font-size: 0.8rem; color: rgba(255,255,255,0.25); font-weight: 300; }
   .hero-grid { grid-template-columns: 1fr; }
   .hero-card { display: none; }
   .services-grid { grid-template-columns: 1fr; }
-  .app-spotlight-inner { grid-template-columns: 1fr; }
-  .app-visual { aspect-ratio: 2/1; }
+  .app-card { grid-template-columns: 1fr; }
   .contact-inner { flex-direction: column; }
 }
 @media (max-width: 640px) {
@@ -415,31 +391,38 @@ footer p { font-size: 0.8rem; color: rgba(255,255,255,0.25); font-weight: 300; }
   </div>
 </section>
 
-<!-- APP SPOTLIGHT -->
-<section class="app-spotlight" id="apps">
+<!-- APP SECTION -->
+<section class="app-section" id="apps">
   <div class="wrap">
     <div class="section-header">
       <div class="section-eyebrow">Our latest project</div>
-      <h2 class="section-title">Learn to Read</h2>
     </div>
-    <div class="app-spotlight-inner">
+    <div class="app-card">
+      <img src="images/learn-screenshot.png"
+           alt="Learn to Read"
+           style="border-radius:16px; width:100%; object-fit:cover; align-self:start;">
       <div>
-        <span class="app-category">Education · Ages 5–7 · Romanian</span>
-        <p>An interactive literacy app that helps Romanian children aged 5–7 learn to recognize letters and read — through voice recognition, animated characters, and fun mini-games.</p>
-        <ul class="app-features">
+        <div class="app-meta">
+          <span class="badge badge-edu">Education</span>
+          <span class="badge badge-ios">iOS</span>
+          <span class="badge badge-neutral">Ages 5–7</span>
+          <span class="badge badge-neutral">Romanian</span>
+        </div>
+        <h2>Learn to Read</h2>
+        <p>An interactive literacy app that helps Romanian children aged 5–7 learn to recognize letters and read. Combines voice recognition, animated characters, and mini-games into a learning experience children actually want to use.</p>
+        <ul class="feature-list">
           <li>Voice recognition for real-time pronunciation feedback</li>
           <li>Progressive learning path — letters, syllables, words</li>
           <li>Badge and reward system with 26 collectible characters</li>
-          <li>No ads · Privacy first · COPPA compliant</li>
+          <li>7 game categories keeping learning fresh and engaging</li>
+          <li>No ads · No data collection · COPPA compliant</li>
+          <li>Built with SwiftUI · Firebase Analytics · Crashlytics</li>
         </ul>
         <div class="app-actions">
-          <span class="coming-soon">Coming soon on the App Store</span>
+          <span class="app-status">Coming soon on the App Store</span>
           <a href="portfolio.html#invata" class="app-link">See full details →</a>
         </div>
       </div>
-      <img src="images/learn-screenshot.png"
-           alt="Learn to Read"
-           style="border-radius:16px; width:100%; object-fit:cover;">
     </div>
   </div>
 </section>
