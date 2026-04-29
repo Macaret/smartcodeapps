@@ -27,6 +27,7 @@ nav {
   padding: 1.1rem 6%;
   background: rgba(255,255,255,0.93); backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
+  max-width: 100%;
 }
 .nav-logo {
   font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 400;
@@ -39,6 +40,10 @@ nav {
   transition: color 0.2s;
 }
 .back-link:hover { color: var(--accent); }
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a { color: var(--ink-muted); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+.nav-links a:hover { color: var(--ink); }
+.nav-links a.active { color: var(--accent); font-weight: 500; }
 main { max-width: 720px; margin: 0 auto; padding: 8rem 2rem 5rem; }
 .page-label {
   font-size: 0.78rem; font-weight: 500;
@@ -82,7 +87,12 @@ footer a:hover { color: var(--accent); }
 
 <nav>
   <a href="index.html" class="nav-logo">Smart Code <span>Apps</span></a>
-  <a href="index.html" class="back-link">← Back to home</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="learn-to-read.html">Learn to Read</a></li>
+    <li><a href="privacy.html" class="active">Privacy</a></li>
+  </ul>
 </nav>
 
 <main>
@@ -103,7 +113,7 @@ footer a:hover { color: var(--accent); }
     <h2>2. Apps covered by this policy</h2>
     <p>This Privacy Policy applies to all applications developed and published by Smart Code Apps, including:</p>
     <ul>
-      <li><strong>Învață să Citești (Learn to Read)</strong> — an educational literacy app for children ages 5–7</li>
+      <li><strong>Învață să Citești (Learn to Read)</strong> — an educational literacy app for preschoolers</li>
     </ul>
     <p>Each app may also have its own supplementary privacy notice where applicable.</p>
   </div>
