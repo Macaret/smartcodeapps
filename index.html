@@ -61,6 +61,7 @@ nav {
 .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
 .nav-links a { color: var(--ink-muted); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
 .nav-links a:hover { color: var(--ink); }
+.nav-links a.active { color: var(--accent); font-weight: 500; }
 .nav-cta {
   background: var(--ink) !important; color: #fff !important;
   padding: 0.5rem 1.3rem; border-radius: 50px;
@@ -303,7 +304,9 @@ footer p { font-size: 0.8rem; color: rgba(255,255,255,0.25); font-weight: 300; }
   <div class="nav-inner">
     <a href="#" class="nav-logo">Smart Code <span>Apps</span></a>
     <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
       <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="learn-to-read.html">Learn to Read</a></li>
       <li><a href="#contact" class="nav-cta">Get in touch</a></li>
     </ul>
   </div>
@@ -405,22 +408,22 @@ footer p { font-size: 0.8rem; color: rgba(255,255,255,0.25); font-weight: 300; }
         <div class="app-meta">
           <span class="badge badge-edu">Education</span>
           <span class="badge badge-ios">iOS</span>
-          <span class="badge badge-neutral">Ages 5–7</span>
+          <span class="badge badge-neutral">preschoolers</span>
           <span class="badge badge-neutral">Romanian</span>
         </div>
         <h2>Learn to Read</h2>
-        <p>An interactive literacy app that helps Romanian children aged 5–7 learn to recognize letters and read. Combines voice recognition, animated characters, and mini-games into a learning experience children actually want to use.</p>
+        <p>"Learn to Read" is an educational app for preschoolers, built on a progressive learning method with proven results: each new letter unlocks new words, each new word unlocks new sentences — until the child is reading short stories on their own.</p>
         <ul class="feature-list">
           <li>Voice recognition for real-time pronunciation feedback</li>
           <li>Progressive learning path — letters, syllables, words</li>
           <li>Badge and reward system with 26 collectible characters</li>
-          <li>7 game categories keeping learning fresh and engaging</li>
+          <li>8 game categories keeping learning fresh and engaging</li>
           <li>No ads · No data collection · COPPA compliant</li>
           <li>Built with SwiftUI · Firebase Analytics · Crashlytics</li>
         </ul>
         <div class="app-actions">
           <span class="app-status">Coming soon on the App Store</span>
-          <a href="portfolio.html#invata" class="app-link">See full details →</a>
+          <a href="learn-to-read.html" class="app-link">See full details →</a>
         </div>
       </div>
     </div>
