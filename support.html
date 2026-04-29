@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support — Learn to Read App</title>
+<meta name="description" content="Support page for Learn to Read app. Find answers to frequently asked questions and contact information.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #0f0f1a;
+  --ink-muted: #52526e;
+  --ink-light: #9898b0;
+  --accent: #5b4af7;
+  --accent-2: #f59e0b;
+  --accent-light: #eeebff;
+  --surface: #ffffff;
+  --surface-alt: #f7f7fb;
+  --border: rgba(91,74,247,0.1);
+  --border-solid: #e8e8f0;
+  --radius: 20px;
+  --radius-sm: 10px;
+  --max-w: 1200px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--ink);
+  background: var(--surface);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 6%; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(255,255,255,0.93);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: var(--max-w); margin: 0 auto;
+  padding: 1.1rem 6%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Fraunces', serif;
+  font-size: 1.15rem; font-weight: 400;
+  color: var(--ink); text-decoration: none; letter-spacing: -0.01em;
+}
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a { color: var(--ink-muted); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+.nav-links a:hover { color: var(--ink); }
+.nav-links a.active { color: var(--accent); font-weight: 500; }
+.nav-cta {
+  background: var(--ink) !important; color: #fff !important;
+  padding: 0.5rem 1.3rem; border-radius: 50px;
+  font-weight: 500 !important; font-size: 0.88rem;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--accent) !important; }
+
+/* ── PAGE HERO ── */
+.page-hero { 
+  padding: 9rem 0 3rem; 
+  max-width: 800px;
+}
+.section-eyebrow {
+  font-size: 0.78rem; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--accent); margin-bottom: 0.75rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.section-eyebrow::before { content: ''; width: 20px; height: 1.5px; background: var(--accent); }
+.page-hero h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 300; line-height: 1.1;
+  letter-spacing: -0.03em; color: var(--ink); margin-bottom: 1rem;
+}
+.page-hero p {
+  font-size: 1.05rem; color: var(--ink-muted);
+  font-weight: 300; line-height: 1.85; margin-bottom: 3rem;
+}
+
+/* ── CONTENT SECTIONS ── */
+.support-section { 
+  margin-bottom: 4rem;
+  padding: 2.5rem;
+  background: var(--surface-alt);
+  border: 1px solid var(--border-solid);
+  border-radius: var(--radius);
+}
+.support-section h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.6rem; font-weight: 300;
+  letter-spacing: -0.02em; color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+
+/* ── FAQ ── */
+.faq-list { list-style: none; }
+.faq-item {
+  border-bottom: 1px solid var(--border-solid);
+  padding: 1.5rem 0;
+}
+.faq-item:last-child { border-bottom: none; }
+.faq-question {
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem; font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 0.75rem;
+}
+.faq-answer {
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+/* ── CONTACT SECTION ── */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.contact-block {
+  padding: 1.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border-solid);
+  border-radius: var(--radius-sm);
+}
+.contact-block p {
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+  font-weight: 300;
+  line-height: 1.8;
+  margin-bottom: 0.75rem;
+}
+.contact-block p:last-child { margin-bottom: 0; }
+.contact-email {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  background: var(--accent-light);
+  color: var(--accent);
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+.contact-email:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ── META INFO ── */
+.meta-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-solid);
+}
+.meta-item {
+  text-align: center;
+}
+.meta-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-light);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+.meta-value {
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 1.75rem 0;
+  margin-top: 4rem;
+}
+.footer-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 6%;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+}
+footer p { font-size: 0.8rem; color: rgba(255,255,255,0.25); font-weight: 300; }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.35); text-decoration: none; }
+.footer-links a:hover { color: rgba(255,255,255,0.7); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .nav-inner { padding: 1rem 4%; }
+  .wrap { padding: 0 4%; }
+  .page-hero { padding: 6rem 0 2rem; }
+  .support-section { padding: 1.5rem; }
+  .meta-info { grid-template-columns: 1fr; }
+  .nav-links li:not(:last-child) { display: none; }
+  .footer-inner { padding: 0 4%; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Smart Code <span>Apps</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="learn-to-read.html">Learn to Read</a></li>
+      <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="page-hero">
+    <div class="section-eyebrow">Support</div>
+    <h1>Learn to Read — Support</h1>
+    <p>Welcome to the support page for Learn to Read, the app that helps preschoolers learn to read in Romanian.</p>
+  </div>
+
+  <!-- FAQ SECTION -->
+  <div class="support-section">
+    <h2>Frequently Asked Questions</h2>
+    
+    <ul class="faq-list">
+      <li class="faq-item">
+        <div class="faq-question">What age is the app designed for?</div>
+        <div class="faq-answer">Learn to Read is designed for preschoolers who are just beginning their reading journey.</div>
+      </li>
+      
+      <li class="faq-item">
+        <div class="faq-question">Is the app free?</div>
+        <div class="faq-answer">The first letters are completely free. Full access to all letters and games is unlocked through a one-time purchase, with no subscription required.</div>
+      </li>
+      
+      <li class="faq-item">
+        <div class="faq-question">Does the app work without internet?</div>
+        <div class="faq-answer">Most content works offline after downloading. However, the voice recognition feature requires an active internet connection.</div>
+      </li>
+      
+      <li class="faq-item">
+        <div class="faq-question">What devices is the app available on?</div>
+        <div class="faq-answer">Learn to Read is available on iPhone and iPad running iOS 16.6 or later, as well as on Mac with macOS.</div>
+      </li>
+      
+      <li class="faq-item">
+        <div class="faq-question">I purchased the app on one device and want to access it on another. What should I do?</div>
+        <div class="faq-answer">Open the app on your new device, go to the payment screen and tap "Restore Purchases." Make sure you are signed in with the same Apple ID used for the original purchase.</div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- CONTACT SECTION -->
+  <div class="support-section" id="contact">
+    <h2>Contact</h2>
+    
+    <div class="contact-info">
+      <div class="contact-block">
+        <p>For any questions or technical issues, you can reach us at:</p>
+        <a href="mailto:contact@smartcodeapps.com" class="contact-email">📧 contact@smartcodeapps.com</a>
+        <p style="margin-top: 1rem;">We respond within 48 hours.</p>
+      </div>
+    </div>
+    
+    <div class="meta-info">
+      <div class="meta-item">
+        <div class="meta-label">Developer</div>
+        <div class="meta-value">Smart Code Apps</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Current Version</div>
+        <div class="meta-value">1.0</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Last Updated</div>
+        <div class="meta-value">April 2026</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>© 2026 Smart Code Apps. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="learn-to-read.html">Learn to Read</a>
+      <a href="support.html">Support</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

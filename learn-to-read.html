@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learn to Read — Smart Code Apps</title>
+<meta name="description" content="Learn to Read is an educational app for preschoolers, built on a progressive learning method with proven results: each new letter unlocks new words, each new word unlocks new sentences — until the child is reading short stories on their own.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #0f0f1a;
+  --ink-muted: #52526e;
+  --ink-light: #9898b0;
+  --accent: #5b4af7;
+  --accent-2: #f59e0b;
+  --accent-light: #eeebff;
+  --surface: #ffffff;
+  --surface-alt: #f7f7fb;
+  --border: rgba(91,74,247,0.1);
+  --border-solid: #e8e8f0;
+  --radius: 20px;
+  --radius-sm: 10px;
+  --max-w: 1200px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--ink);
+  background: var(--surface);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 6%; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(255,255,255,0.93);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: var(--max-w); margin: 0 auto;
+  padding: 1.1rem 6%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Fraunces', serif;
+  font-size: 1.15rem; font-weight: 400;
+  color: var(--ink); text-decoration: none; letter-spacing: -0.01em;
+}
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a { color: var(--ink-muted); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+.nav-links a:hover { color: var(--ink); }
+.nav-links a.active { color: var(--accent); font-weight: 500; }
+.nav-cta {
+  background: var(--ink) !important; color: #fff !important;
+  padding: 0.5rem 1.3rem; border-radius: 50px;
+  font-weight: 500 !important; font-size: 0.88rem;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--accent) !important; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 8rem 0 5rem;
+}
+.hero-grid {
+  display: grid; grid-template-columns: 1fr 420px;
+  gap: 4rem; align-items: center;
+}
+.hero-content {
+  max-width: 580px;
+}
+.section-eyebrow {
+  font-size: 0.78rem; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--accent); margin-bottom: 0.75rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.section-eyebrow::before { content: ''; width: 20px; height: 1.5px; background: var(--accent); }
+h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2.5rem, 5vw, 3.8rem);
+  font-weight: 300; line-height: 1.1;
+  letter-spacing: -0.03em; color: var(--ink); margin-bottom: 1rem;
+}
+.hero p {
+  font-size: 1.1rem; color: var(--ink-muted);
+  font-weight: 300; line-height: 1.85; margin-bottom: 1.5rem;
+}
+.app-meta { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.badge {
+  font-size: 0.72rem; font-weight: 500;
+  padding: 0.35rem 0.9rem; border-radius: 50px;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.badge-edu { background: #fef3c7; color: #92400e; }
+.badge-ios { background: var(--accent-light); color: var(--accent); }
+.badge-neutral { background: var(--surface-alt); color: var(--ink-light); border: 1px solid var(--border-solid); }
+.app-status {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--accent-light); color: var(--accent);
+  padding: 0.6rem 1.2rem; border-radius: 50px;
+  font-size: 0.85rem; font-weight: 500;
+}
+.app-status::before {
+  content: ''; width: 6px; height: 6px;
+  background: var(--accent); border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+.hero-image {
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #fef3c7 0%, #eeebff 100%);
+  border-radius: var(--radius);
+  aspect-ratio: 1/1;
+  padding: 2rem;
+}
+.hero-image img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+}
+
+/* ── FEATURES SECTION ── */
+.features-section {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border-solid);
+}
+.section-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 3rem;
+  max-width: 600px;
+}
+.features-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+.feature-card {
+  background: var(--surface-alt);
+  border: 1px solid var(--border-solid);
+  border-radius: var(--radius-sm);
+  padding: 2rem;
+}
+.feature-icon {
+  width: 50px; height: 50px;
+  background: var(--accent-light);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.feature-card h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.2rem; font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 0.75rem;
+}
+.feature-card p {
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+/* ── SPECIFICATIONS SECTION ── */
+.specs-section {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border-solid);
+}
+.specs-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+.spec-box {
+  text-align: center;
+  padding: 2rem;
+  background: var(--surface-alt);
+  border-radius: var(--radius-sm);
+}
+.spec-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-light);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+.spec-value {
+  font-family: 'Fraunces', serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--ink);
+}
+
+/* ── LEARNING PATH SECTION ── */
+.learning-path-section {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border-solid);
+}
+.path-timeline {
+  position: relative;
+  padding: 2rem 0;
+}
+.path-stage {
+  display: grid; grid-template-columns: 120px 1fr;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  align-items: start;
+}
+.stage-number {
+  font-family: 'Fraunces', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--accent);
+  text-align: center;
+  padding: 1rem;
+  background: var(--accent-light);
+  border-radius: var(--radius-sm);
+  line-height: 1;
+}
+.stage-content h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.stage-description {
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+  font-weight: 300;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+.stage-items {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+.stage-item {
+  font-size: 0.85rem;
+  background: var(--accent-light);
+  color: var(--accent);
+  padding: 0.35rem 0.75rem;
+  border-radius: 50px;
+  font-weight: 500;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 1.75rem 0;
+  margin-top: 5rem;
+}
+.footer-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 6%;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+}
+footer p { font-size: 0.8rem; color: rgba(255,255,255,0.25); font-weight: 300; }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.35); text-decoration: none; }
+.footer-links a:hover { color: rgba(255,255,255,0.7); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .features-grid { grid-template-columns: 1fr; }
+  .specs-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 6rem 0 3rem; }
+  .nav-inner { padding: 1rem 4%; }
+  .wrap { padding: 0 4%; }
+  .section-title { font-size: 1.5rem; }
+  .hero p { font-size: 1rem; }
+  .specs-grid { grid-template-columns: repeat(2, 1fr); }
+  .path-stage { grid-template-columns: 100px 1fr; }
+  .footer-inner { padding: 0 4%; }
+}
+
+@media (max-width: 480px) {
+  .specs-grid { grid-template-columns: 1fr; }
+  .features-grid { grid-template-columns: 1fr; }
+  .nav-links li:not(:last-child) { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Smart Code <span>Apps</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="learn-to-read.html" class="active">Learn to Read</a></li>
+      <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="section-eyebrow">iOS Application</div>
+        <h1>Learn to Read</h1>
+        <p>"Learn to Read" is an educational app for preschoolers, built on a progressive learning method with proven results: each new letter unlocks new words, each new word unlocks new sentences — until the child is reading short stories on their own.</p>
+        
+        <div class="app-meta">
+          <span class="badge badge-edu">Education</span>
+          <span class="badge badge-ios">iOS</span>
+          <span class="badge badge-neutral">preschoolers</span>
+          <span class="badge badge-neutral">Romanian</span>
+        </div>
+        
+        <span class="app-status">Coming soon on the App Store</span>
+      </div>
+      
+      <div class="hero-image">
+        <img src="images/learn-screenshot.png"
+             alt="Learn to Read app interface"
+             onError="this.style.fontSize='3rem'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.innerHTML='📱';">
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features-section">
+    <h2 class="section-title">What makes Learn to Read special</h2>
+    
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🎤</div>
+        <h3>Voice Recognition</h3>
+        <p>Real-time pronunciation feedback helps children hear the difference between correct and incorrect pronunciation, reinforcing proper speech patterns.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">�</div>
+        <h3>8 Game Categories</h3>
+        <p>Mini-games keep learning fresh and engaging. Variety prevents boredom and accommodates different learning styles.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🏆</div>
+        <h3>Badge & Reward System</h3>
+        <p>26 collectible characters serve as badges for completing lessons. Children earn rewards as they progress through the curriculum.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <h3>Privacy First</h3>
+        <p>No ads. No data collection. COPPA compliant. Parents can trust that their child's learning happens in a safe, private environment.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📈</div>
+        <h3>Progressive Learning Path</h3>
+        <p>Curriculum flows naturally from letters to syllables to words, building confidence with each milestone.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECIFICATIONS -->
+  <section class="specs-section">
+    <h2 class="section-title">By the numbers</h2>
+    
+    <div class="specs-grid">
+      <div class="spec-box">
+        <div class="spec-label">Target Age</div>
+        <div class="spec-value">5–7</div>
+      </div>
+      <div class="spec-box">
+        <div class="spec-label">Collectible Characters</div>
+        <div class="spec-value">26</div>
+      </div>
+      <div class="spec-box">
+        <div class="spec-label">Game Categories</div>
+        <div class="spec-value">8</div>
+      </div>
+      <div class="spec-box">
+        <div class="spec-label">Language</div>
+        <div class="spec-value">Romanian</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEARNING PATH -->
+  <section class="learning-path-section">
+    <h2 class="section-title">Progressive learning path</h2>
+    
+    <div class="path-timeline">
+      <div class="path-stage">
+        <div class="stage-number">1</div>
+        <div class="stage-content">
+          <h3>Letter Recognition</h3>
+          <p>Children start by learning individual letters with phonetic instructions and visual cues. Voice recognition helps them practice pronunciation in a judgment-free environment.</p>
+          <ul class="stage-items">
+            <li>Letter identification</li>
+            <li>Sound association</li>
+            <li>Voice feedback</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="path-stage">
+        <div class="stage-number">2</div>
+        <div class="stage-content">
+          <h3>Syllable Formation</h3>
+          <p>Once letters are familiar, children learn how sounds combine into syllables. This intermediate step builds confidence before tackling full words.</p>
+          <ul class="stage-items">
+            <li>Vowel combinations</li>
+            <li>Syllable patterns</li>
+            <li>Sound blending</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="path-stage">
+        <div class="stage-number">3</div>
+        <div class="stage-content">
+          <h3>Word Reading</h3>
+          <p>Children apply their foundational knowledge to read complete words. Success reinforces learning and builds reading confidence and interest in literature.</p>
+          <ul class="stage-items">
+            <li>Common words</li>
+            <li>Sentence formation</li>
+            <li>Reading exercises</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="path-stage">
+        <div class="stage-number">4</div>
+        <div class="stage-content">
+          <h3>Reading Sentences & Stories</h3>
+          <p>The final stage brings reading to life through engaging short stories and sentence construction. Children practice reading fluency and comprehension with real narratives.</p>
+          <ul class="stage-items">
+            <li>Short stories</li>
+            <li>Sentence comprehension</li>
+            <li>Reading fluency</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUPPORT SECTION -->
+  <section style="padding: 5rem 0; background: var(--surface-alt); border-radius: var(--radius); margin: 3rem 0;">
+    <div style="text-align: center;">
+      <h2 style="font-family: 'Fraunces', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 300; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 1rem;">Need help?</h2>
+      <p style="font-size: 1rem; color: var(--ink-muted); font-weight: 300; line-height: 1.8; max-width: 500px; margin: 0 auto 2rem;">Visit our support page to find answers to frequently asked questions and get in touch with our team.</p>
+      <a href="support.html" style="display: inline-block; background: var(--accent); color: #fff; padding: 0.85rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: background 0.2s;">Go to Support →</a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Smart Code Apps. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="portfolio.html">Portfolio</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="support.html">Support</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
